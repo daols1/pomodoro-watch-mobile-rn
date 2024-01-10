@@ -1,26 +1,30 @@
+// import { View, Text } from "react-native";
+import React from "react";
+// signinpic;
+import { SafeAreaView, StyleSheet, Text, TextInput, View } from "react-native";
 import { Link } from "expo-router";
-import { StatusBar } from "expo-status-bar";
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { Image } from "expo-image";
 import { Defs, G, Path, Rect, Svg } from "react-native-svg";
-import image from "../assets/welcomeimg.png";
+import signinpic from "../assets/signinpic.png";
 import ButtonCustom from "./components/pressableBtn";
 import Btn from "./components/pressableBtn";
 import { Plus } from "lucide-react-native";
-// import ButtonCustom from "./components/ButtonCustom.js";
 
-export default function Page() {
+export default function Signin() {
   return (
-    <SafeAreaView className="px-10 bg-[#FFFFFF] h-screen ">
-      <Text className="text-3xl text-center font-semibold my-5 ">
+    <View className=" bg-[#FFFFFF] h-screen">
+      {/* <Text className="text-3xl text-center font-semibold my-5 ">
         Welcome !
-      </Text>
+      </Text> */}
       <View className="mt-28 ">
-        <Image source={image} className="w-32 h-32 self-center " />
-        <Text className="text-center text-[16px] my-3 ">
+        <Image source={signinpic} className="w-32 h-32 self-center " />
+        {/* <Text className="text-center text-[16px] my-3 ">
           Increase your productivity and manage your time effectively with
           Pomodore.
-        </Text>
+        </Text> */}
+        <TextInput >w q</TextInput>
+
+
         <Btn
           displyText="Sign in"
           bg={"#F5F5F5"}
@@ -38,7 +42,6 @@ export default function Page() {
       <Link asChild href={"/hometab"} replace>
         <Text>Dashboard</Text>
       </Link>
-      <StatusBar style="auto" />
-    </SafeAreaView>
+    </View>
   );
 }

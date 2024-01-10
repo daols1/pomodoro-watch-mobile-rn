@@ -14,7 +14,8 @@ export default function _layout() {
       <Stack.Screen
         name="notification"
         options={{
-          headerShown: false,
+          headerShown: true,
+          headerTitle: "Notifications",
         }}
       />
     </Stack>
