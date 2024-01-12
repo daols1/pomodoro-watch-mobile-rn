@@ -1,16 +1,46 @@
 // import { View, Text } from "react-native";
 import React from "react";
 // signinpic;
-import { SafeAreaView, StyleSheet, Text, TextInput, View } from "react-native";
+import {
+  Button,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 import { Link } from "expo-router";
 import { Image } from "expo-image";
 import { Defs, G, Path, Rect, Svg } from "react-native-svg";
 import signinpic from "../assets/signinpic.png";
-import ButtonCustom from "./components/pressableBtn";
 import Btn from "./components/pressableBtn";
-import { Plus } from "lucide-react-native";
+import { useForm, Controller } from "react-hook-form";
+import { router } from "expo-router";
+import useRoutesFn from "./hooks/useRoutesFn";
 
 export default function Signin() {
+  const {
+    control,
+    handleSubmit,
+    reset,
+    resetField,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
+  const onSubmit = (data) => {
+    console.log(data);
+    reset();
+    router.push("/hometab");
+  };
+
+  const btnHandler = () => {
+    handleSubmit(onSubmit);
+  };
+  // console.log(btnHandler("home", true));
   return (
     <View className=" bg-[#FFFFFF] h-screen">
       {/* <Text className="text-3xl text-center font-semibold my-5 ">
@@ -18,21 +48,55 @@ export default function Signin() {
       </Text> */}
       <View className="mt-28 ">
         <Image source={signinpic} className="w-32 h-32 self-center " />
-        {/* <Text className="text-center text-[16px] my-3 ">
-          Increase your productivity and manage your time effectively with
-          Pomodore.
-        </Text> */}
-        <TextInput >w q</TextInput>
 
+        <Controller
+          control={control}
+          rules={{
+            required: true,
+            pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+          }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <TextInput
+              placeholder="Email"
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+              className="py-4 bg-[#F7F7F7] text-[18px] mx-8 px-2 focus:outline-[#28303F] mb-2 "
+            />
+          )}
+          name="email"
+        />
+        {errors.email?.type == "pattern" && (
+          <Text className="text-red-500 mx-8">
+            Please put in a valid email.
+          </Text>
+        )}
+        {errors.email?.type == "required" && (
+          <Text className="text-red-500 mx-8">This field can't be empty</Text>
+        )}
 
+        <Controller
+          control={control}
+          rules={{
+            maxLength: 100,
+          }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <TextInput
+              placeholder="Password"
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+              className="py-4 bg-[#F7F7F7] text-[18px] mx-8 px-2 focus:outline-[#28303F]  "
+            />
+          )}
+          name="password"
+        />
         <Btn
           displyText="Sign in"
-          bg={"#F5F5F5"}
+          bg={"#75CE8E"}
           full
-          link="signin"
-          // icon={<Plus />}
+          onPressFn={handleSubmit(onSubmit)}
         />
-        <Btn displyText="Sign Up" bg={"#75CE8E"} full link="signup" />
       </View>
       <View>
         <Text className="px-10 text-center text-xl my-2 ">

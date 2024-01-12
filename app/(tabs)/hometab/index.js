@@ -67,10 +67,6 @@ export default function hometab() {
         </View>
         <View></View>
       </View>
-
-      {/* <Link asChild href={"/"} replace>
-        <Text>index</Text>
-      </Link> */}
     </SafeAreaView>
   );
 }

@@ -17,6 +17,7 @@ export default function _layout() {
         options={{
           headerShown: true,
           presentation: "modal",
+          headerTitle: "Add template",
         }}
       />
     </Stack>
