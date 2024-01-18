@@ -24,6 +24,12 @@ const Layout = () => {
         }}
       />
       <Stack.Screen
+        name="forgotpassword"
+        options={{
+          headerTitle: "Reset password",
+        }}
+      />
+      <Stack.Screen
         name="(tabs)"
         options={{
           headerShown: false,

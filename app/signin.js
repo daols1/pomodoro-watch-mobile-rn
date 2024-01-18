@@ -61,7 +61,7 @@ export default function Signin() {
               onBlur={onBlur}
               onChangeText={onChange}
               value={value}
-              className="py-4 bg-[#F7F7F7] text-[18px] mx-8 px-2 focus:outline-[#28303F] mb-2 "
+              className="py-4 bg-[#F7F7F7] text-[18px] mx-8 px-2 focus:outline-[#28303F] mb-6 "
             />
           )}
           name="email"
@@ -86,7 +86,7 @@ export default function Signin() {
               onBlur={onBlur}
               onChangeText={onChange}
               value={value}
-              className="py-4 bg-[#F7F7F7] text-[18px] mx-8 px-2 focus:outline-[#28303F]  "
+              className="py-4 bg-[#F7F7F7] text-[18px] mx-8 px-2 focus:outline-[#28303F] mb-8 "
             />
           )}
           name="password"
@@ -102,6 +102,12 @@ export default function Signin() {
         <Text className="px-10 text-center text-xl my-2 ">
           Continue with google
         </Text>
+        <Link
+          className=" self-center text-[20px] my-3 text-[#75CE8E] "
+          href={"/forgotpassword"}
+        >
+          Forgotten password?
+        </Link>
       </View>
       <Link asChild href={"/hometab"} replace>
         <Text>Dashboard</Text>

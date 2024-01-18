@@ -18,7 +18,7 @@ import { useForm, Controller } from "react-hook-form";
 import { router } from "expo-router";
 import useRoutesFn from "./hooks/useRoutesFn";
 
-export default function Signup() {
+export default function Forgotpassword() {
   const {
     control,
     handleSubmit,
@@ -27,9 +27,7 @@ export default function Signup() {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      firstName: "",
       email: "",
-      occupation: "",
       password: "",
     },
   });
@@ -48,26 +46,13 @@ export default function Signup() {
       {/* <Text className="text-3xl text-center font-semibold my-5 ">
         Welcome !
       </Text> */}
-      <View className="mt-14  ">
+      <View className=" mt-10 ">
         {/* <Image source={signinpic} className="w-32 h-32 self-center " /> */}
-        {/* Full name */}
-        <Controller
-          control={control}
-          rules={{
-            maxLength: 100,
-          }}
-          render={({ field: { onChange, onBlur, value } }) => (
-            <TextInput
-              placeholder="Full name"
-              onBlur={onBlur}
-              onChangeText={onChange}
-              value={value}
-              className="py-4 bg-[#F7F7F7] text-[18px] mx-8 px-2 focus:outline-[#28303F] mb-8 "
-            />
-          )}
-          name="fullName"
-        />
-        {/* Email */}
+        <Text className="px-10 text-[20px] text-center mb-4 ">
+          Please type in your email, we will send you a link to reset the
+          password.
+        </Text>
+
         <Controller
           control={control}
           rules={{
@@ -93,25 +78,8 @@ export default function Signup() {
         {errors.email?.type == "required" && (
           <Text className="text-red-500 mx-8">This field can't be empty</Text>
         )}
-        {/* What do you do? */}
-        <Controller
-          control={control}
-          rules={{
-            maxLength: 100,
-          }}
-          render={({ field: { onChange, onBlur, value } }) => (
-            <TextInput
-              placeholder="What do you do?"
-              onBlur={onBlur}
-              onChangeText={onChange}
-              value={value}
-              className="py-4 bg-[#F7F7F7] text-[18px] mx-8 px-2 focus:outline-[#28303F] mb-8 "
-            />
-          )}
-          name="occupation"
-        />
-        {/* Password */}
-        <Controller
+
+        {/* <Controller
           control={control}
           rules={{
             maxLength: 100,
@@ -126,25 +94,15 @@ export default function Signup() {
             />
           )}
           name="password"
-        />
+        /> */}
         <Btn
-          displyText="Sign Up"
+          displyText="Send link"
           bg={"#75CE8E"}
           full
           onPressFn={handleSubmit(onSubmit)}
         />
       </View>
-      <View>
-        <Text className="px-10 text-center text-xl my-2 ">
-          Continue with google
-        </Text>
-        <Link
-          className=" self-center text-[20px] my-3 text-[#75CE8E] "
-          href={"/signin"}
-        >
-          or sign in
-        </Link>
-      </View>
+      <View></View>
       <Link asChild href={"/hometab"} replace>
         <Text>Dashboard</Text>
       </Link>
